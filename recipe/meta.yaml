@@ -6,21 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nox_poetry-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nox_poetry-{{ version }}.tar.gz
   sha256: dc7ecbbd812a333a0c0b558f57e5b37f7c12926cddbcecaf2264957fd373824e
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python <4.0
+    - python {{ python_min }}
     - poetry-core >=1.0.0
     - pip
   run:
-    - python >=3.7.0,<4.0.0
+    - python >={{ python_min }},<4.0.0
     - nox >=2020.8.22
     - tomlkit >=0.7
     - packaging >=20.9
@@ -32,6 +32,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/cjolowicz/nox-poetry

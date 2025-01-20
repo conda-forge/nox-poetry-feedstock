@@ -1,5 +1,5 @@
 {% set name = "nox-poetry" %}
-{% set version = "1.0.3" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nox_poetry-{{ version }}.tar.gz
-  sha256: dc7ecbbd812a333a0c0b558f57e5b37f7c12926cddbcecaf2264957fd373824e
+  sha256: b19c597ec20cfb071eaa853aee2e28cedf8d88799d68b482e7b6c915948a2817
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
